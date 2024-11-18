@@ -10,21 +10,21 @@ on:
 jobs:
   build:
 
-    run-on: self-hosted
-
+    runs-on: self-hosted
+    
     strategy:
-      matrix:
-        node-version: [18.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
+        matrix:
+          node-version: [18.x]
+          # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+  
     steps:
-    - uses: actions/checkout@v4
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm cl
-    - run: |
-        touch .env
-        echo "${{ secrets.PROD_ENV_FILE }}" > .env  
+      - uses: actions/checkout@v4
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - run: npm cl
+      - run: |
+          touch .env
+          echo "${{ secrets.PROD_ENV_FILE }}" > .env  
