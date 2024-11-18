@@ -11,6 +11,8 @@ app.get("/", (req, res) => {
   res.send("node deploy test");
 });
 
+// test
+
 app.use(require("./routes/getRoutes"));
 app.use(require("./routes/deleteRoutes"));
 app.use(require("./routes/postRoutes"));
